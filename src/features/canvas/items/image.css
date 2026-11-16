@@ -1,0 +1,11 @@
+/* Картинка на поле */
+.image-item {
+  position: absolute;
+  display: block;
+  max-width: none;
+  cursor: default;
+}
+
+.image-item.selected {
+  box-shadow: 0 0 0 1px var(--accent);
+}

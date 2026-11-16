@@ -1,0 +1,75 @@
+/* Ячейка-ссылка: вместо длинного адреса короткая подпись */
+.field-row {
+  display: grid;
+  gap: 0.2rem;
+  font-size: 0.65rem;
+  color: #6b6b6b;
+}
+
+.field-link {
+  display: flex;
+  align-items: center;
+  gap: 0.1rem;
+  padding: 0.2rem 0.3rem 0.2rem 0.5rem;
+  background: #ffffff;
+  border: 1px solid #cfcfcf;
+  border-radius: 6px;
+}
+
+.field-link-open {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.15rem 0;
+  font-size: 0.78rem;
+  text-align: left;
+  cursor: pointer;
+  color: #0d9488;
+  background: transparent;
+  border: none;
+}
+
+.field-link-open span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.field-link-open:hover:not(:disabled) span {
+  text-decoration: underline;
+}
+
+.field-link-open:disabled {
+  color: #7a7a7a;
+  cursor: default;
+}
+
+.link-btn {
+  flex: 0 0 auto;
+  width: 1.4rem;
+  height: 1.4rem;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  cursor: pointer;
+  color: #7a7a7a;
+  background: transparent;
+  border: none;
+  border-radius: 5px;
+}
+
+.link-btn:hover {
+  color: #0a0a0a;
+  background: rgba(0, 0, 0, 0.07);
+}
+
+.link-remove:hover {
+  color: #dc2626;
+  background: rgba(220, 38, 38, 0.1);
+}
+
+.link-btn.copied {
+  color: #0d9488;
+}

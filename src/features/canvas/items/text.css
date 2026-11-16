@@ -1,0 +1,22 @@
+/* Текстовый блок на поле */
+.text-item {
+  position: absolute;
+  min-width: 2px;
+  font-size: 16px;
+  line-height: 1.4;
+  white-space: pre-wrap;
+  color: var(--text);
+  cursor: default;
+  outline: none;
+}
+
+.text-item.editing {
+  cursor: text;
+  -webkit-user-select: text;
+  user-select: text;
+  box-shadow: 0 0 0 1px var(--accent);
+}
+
+.text-item.selected:not(.editing) {
+  box-shadow: 0 0 0 1px var(--accent);
+}

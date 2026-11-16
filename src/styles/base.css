@@ -1,0 +1,170 @@
+/* Дизайн из JS_React-Node_Site_AdminPanel: тёмный, моно-шрифт, тонкие рамки */
+@import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap');
+
+:root {
+  --bg: #0a0a0a;
+  --bg-elevated: #111111;
+  --bg-input: #0d0d0d;
+  --border: #2a2a2a;
+  --border-strong: #3a3a3a;
+  --text: #f5f5f5;
+  --muted: #8a8a8a;
+  --muted-2: #5c5c5c;
+  --accent: #14b8a6;
+  --grid-dot: #262626;
+  --radius: 12px;
+  --radius-sm: 8px;
+  --font: 'Geist Mono', 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  height: 100%;
+}
+
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 240px minmax(0, 1fr);
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Как у нативного приложения: без выделения текста и перетаскивания ссылок */
+body {
+  -webkit-user-select: none;
+  user-select: none;
+  cursor: default;
+}
+
+a,
+img,
+svg {
+  -webkit-user-drag: none;
+  user-drag: none;
+}
+
+input,
+textarea {
+  -webkit-user-select: text;
+  user-select: text;
+}
+
+/* Телефон (узкий экран): боковая панель выезжает слева. Окно Mac уже 520px не бывает. */
+.menu-btn,
+.menu-backdrop {
+  display: none;
+}
+
+@media (max-width: 500px) {
+  .layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .sidebar {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 20;
+    width: min(280px, 85vw);
+    padding-top: calc(1.1rem + env(safe-area-inset-top));
+    padding-bottom: calc(1.1rem + env(safe-area-inset-bottom));
+    transform: translateX(-100%);
+    transition: transform 0.2s ease;
+  }
+
+  .layout.menu-open .sidebar {
+    transform: translateX(0);
+  }
+
+  .menu-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 10;
+    background: rgba(0, 0, 0, 0.5);
+  }
+  .layout.menu-open .menu-backdrop {
+    display: block;
+  }
+
+  .menu-btn {
+    position: absolute;
+    top: calc(0.9rem + env(safe-area-inset-top));
+    left: 0.9rem;
+    z-index: 5;
+    width: 2.4rem;
+    height: 2.4rem;
+    display: grid;
+    place-items: center;
+    padding: 0;
+    cursor: pointer;
+    color: var(--muted);
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+  }
+
+  .toolbar {
+    top: calc(0.9rem + env(safe-area-inset-top));
+    left: auto;
+    right: 0.9rem;
+    transform: none;
+  }
+  .canvas-title {
+    top: calc(4.2rem + env(safe-area-inset-top));
+    left: 1rem;
+  }
+  .selection-bar {
+    top: calc(4.3rem + env(safe-area-inset-top));
+    left: auto;
+    right: 0.9rem;
+    transform: none;
+  }
+  .touch-actions {
+    bottom: calc(1rem + env(safe-area-inset-bottom));
+  }
+  .zoom-badge {
+    bottom: calc(1rem + env(safe-area-inset-bottom));
+  }
+}
+
+/* Экран ошибки вместо пустого окна */
+.crash {
+  height: 100%;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 0.8rem;
+  color: var(--muted);
+  text-align: center;
+}
+
+.crash .btn {
+  width: auto;
+  padding: 0.55rem 1.1rem;
+}
+.crash-hint {
+  font-size: 0.7rem;
+  color: var(--muted-2);
+}
